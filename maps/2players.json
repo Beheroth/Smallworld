@@ -1,0 +1,44 @@
+{
+	"nodes": {
+		"1": {
+			"terrain": "sea"
+		},
+		"2": {
+			"terrain": "mountain",
+			"markers": ["mine", "cave"]
+		},
+		"3": {
+			"terrain": "field",
+			"defense": {
+				"savage": 1
+			}
+		},
+		"4": {
+			"terrain": "swamp",
+			"markers": ["magic"],
+			"defense": {
+				"savage": 1
+			}
+		},
+		"5": {
+			"terrain": "plain",
+			"markers": ["cave"]
+		},
+		"6": {
+			"terrain": "swamp",
+			"markers": ["mine"],
+			"defense": {
+				"savage": 1
+			}
+		},
+		"7": {
+			"terrain": "mountain",
+			"markers": [
+				"magic"
+			],
+			"defense": {
+				"savage": 1
+			}
+		}
+	}
+}
