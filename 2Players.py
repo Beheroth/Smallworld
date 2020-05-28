@@ -1,3 +1,4 @@
+import json
 terrains = {
 	"sea": [1, 18, 9],
 	"field": [3, 15, 19, 21],
@@ -102,10 +103,13 @@ if __name__ == "__main__":
 			else:
 				nodes[str(link[i])]["links"] = [str(link[(i+1)%2])]
 
-	#adding borders
+	#adding borderse
 	print(borders)
 	for id in borders:
 		nodes[str(id)].update({"border":True})
 
 	print(len(nodes))
 	print(nodes)
+
+	with open('maps/2players.json', 'w') as file:
+		json.dump(nodes, file, indent=4)
