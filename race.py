@@ -76,13 +76,12 @@ class Human(Race):
 class Elf(Race):
     def die(self, nodeid):
         if nodeid in self.territories:
-            troops = self.territories[nodeid]["defense"][self.name]
-            self.territories[nodeid]["defense"][self.name] = 0
-            node = self.territories[nodeid]["defense"][self.name]
+            troops = self.territories[nodeid]["defense"].pop(self.name)
             self.retreated += troops
+            node = self.territories[nodeid]["defense"][self.name]
             return node
         else:
-            print("Node #{} doesn't contain any {}s.".format(nodeid, self.name))
+            print("Node #{} doesn't contain any {}.".format(nodeid, self.name))
             return None
 
 class Halfling(Race):
@@ -90,8 +89,20 @@ class Halfling(Race):
 
     def attack(self, node):
         token_needed = super(Halfling, self).attack(node)
-        if self.hole >0:
+        if self.hole > 0:
             self.territories[node[0]]["special"] = "Halfling"
+            self.hole -= 1
 
+    def canattack(self, node):
+        if self.hole > 0:
+            if not (self.authorizedterrain(node[1])):
+                print("This terrain is not attackable: {}".format(node[1]["terrain"]))
+                return False
+            if ("special" in node[1]):
+                print("You cannot attack the node #{} because it is locked by {}.".format(node[0], node[1]["special"]))
+                return False
+            return True
+        else:
+            return super(Halfling, self).canattack(node)
 
 
