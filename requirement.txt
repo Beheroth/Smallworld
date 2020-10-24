@@ -3,7 +3,6 @@ click==7.1.2
 distlib==0.3.0
 docutils==0.16
 filelock==3.0.12
-Flask==1.1.2
 itsdangerous==1.1.0
 Jinja2==2.11.2
 kivy-deps.angle==0.1.10

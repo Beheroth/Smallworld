@@ -1,15 +1,9 @@
-from flask import Flask, render_template, redirect, session
 import pygame
 import pygame.examples.midi
 
-import gamestate
+from map import Map
+from gamestate import GameState
 
-
-app = Flask(__name__)
-
-@app.route('/')
-def root():
-	return render_template("root.html")
 
 def main():
 	pygame.init()
@@ -30,6 +24,8 @@ def main():
 	pygame.display.quit()
 
 if __name__ == '__main__':
-	#state = gamestate.GameState()
-	#pygame.examples.midi.main()
-	main()
+	map = Map()
+	map.occupiednodes("humain")
+	gamestate = GameState()
+	gamestate.run()
+	#main()
