@@ -7,17 +7,10 @@ class Race:
         self.retreated = self.troops
         self.killed = 0
         self.declined = False
-        self.territories = {}
-
-    def getneighbours(self):
-        neighbours = []
-        for key in self.territories:
-            neighbours += self.territories[key]["links"]
-        neighbours = list(dict.fromkeys(neighbours))    #remove duplicates
-        return neighbours
+        self.territories = []
 
     def authorizedterrain(self, node):
-        return not(node["terrain"] == "sea")
+        return node["terrain"] != "sea"
 
     def canattack(self, node):
         if not(self.authorizedterrain(node[1])):
