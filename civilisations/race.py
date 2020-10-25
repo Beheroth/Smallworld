@@ -3,11 +3,11 @@ import sys
 sys.path.append("..")
 
 from . import races
-from civilisation import Warrior
+from warrior import Warrior
 
 class Race(Warrior):
     @staticmethod
-    def get_race():
+    def get_races():
         return races.__all__
 
     @staticmethod

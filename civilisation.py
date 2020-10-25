@@ -1,30 +1,6 @@
-from abc import ABC, abstractmethod
-
-class Warrior(ABC):
-    @abstractmethod
-    def __init__(self):
-        self.warriors_alive = 0
-        self.warriors_dead = 0
-
-    @abstractmethod
-    def get_warriors_alive(self):
-        return self.warriors_alive
-
-    @abstractmethod
-    def get_warriors_dead(self):
-        return self.warriors_dead
-
-    @abstractmethod
-    def get_warriors(self):
-        return self.warriors_alive + self.warriors_dead
-
-    @abstractmethod
-    def attack(self, number_warriors, cell):
-        return ("method attack to implement")
-
-    @abstractmethod
-    def die(self):
-        return ("method die to implement")
+from civilisations.race import Race
+from civilisations.affix import Affix
+from warrior import Warrior
 
 class Civilisation(Warrior):
     def __init__(self, race, affix):
@@ -50,3 +26,8 @@ class Civilisation(Warrior):
         self.race.die()
         self.affix.die()
         
+    @staticmethod
+    def get_races_and_affixes():
+        races = Race.get_races()
+        affixes = Affix.get_affixes()
+        return races, affixes

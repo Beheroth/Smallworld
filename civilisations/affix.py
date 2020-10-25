@@ -3,11 +3,11 @@ import sys
 sys.path.append("..")
 
 from . import affixes
-from civilisation import Warrior
+from warrior import Warrior
 
 class Affix(Warrior):
     @staticmethod
-    def get_affix():
+    def get_affixes():
         return affixes.__all__
 
     @staticmethod
